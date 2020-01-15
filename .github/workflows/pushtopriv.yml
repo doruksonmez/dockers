@@ -1,0 +1,17 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build docker image
+      run: docker build . --file Dockerfile --tag cdcr.dev/cordatus-actions/gitact:github-actions
+    - name: Push to Private Reg
+      env: 
+      run: docker login cdcr.dev --username robot$actions --password eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODE2OTM3NDYsImlhdCI6MTU3OTEwMTc0NiwiaXNzIjoiaGFyYm9yLXRva2VuLWlzc3VlciIsImlkIjoxLCJwaWQiOjYsImFjY2VzcyI6W3siUmVzb3VyY2UiOiIvcHJvamVjdC82L3JlcG9zaXRvcnkiLCJBY3Rpb24iOiJwdXNoIiwiRWZmZWN0IjoiIn1dfQ.pgfe-LMsBdqpFYOcwKBWbyBkoFIAD21MyWavGImpMffNRAtmqzL6pgbiJYwM0qdeFQ8PNVYwuX5n4yv-fc5hxXPzuYkDVw0PAYVK53QajOxJF41uQqm7dHmvlObMAs1T5qklTyxcViBOteyLmG6q2jPTMWo5EKECwYCnpgsiJKv10oiauacB2qOLgSo6NiuStS0Qe0f8i9QInoDUqH0zubGl8tyipcx5iWTvYCMnzKBcmIgR9yCZn7OAKewliJh3tyGk3hb7xrBCuDXb3YzctycptDvNvq-m73UKHHkKhhfQMBn0XOyph1YWvb2bJko7qLZeR0jy2MjyuWKmjMrcqy5gRCegNLubl6ONN_GnmU8LPTwCW0QPaS9wuNy0Uv4rO4LCgv7mOtddShMdiOBJRntfLTYVJ0dKLcCEDX_SpZ9DGG0G1KHK5gXPeNjHbL74pwuqPF4SrpgMImVPRkaxfeZVnZAaXvSVAsVrPyTsxBPJHbsO8c85VjIShYxjNfsC1PcBgPHvsHPAKZmbo_TlE_L7IQk-fdZ8vfFWscbnSc3gu7Yse3zDWYTsCliOLUElSXWEonfBQzTfc4i_YSS2gmGin9hfW7GFywOiOJ6b1XQIprTFb7Oru9mYkuLu0vIxNGalki7d7vbZ9q8PkH26aTipZyfpTSdbff4bElWB0oQ && docker push cdcr.dev/cordatus-actions/gitact:github-actions
